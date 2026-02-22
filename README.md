@@ -2,6 +2,8 @@
 
 A classic Minesweeper game implementation built with Python and Pygame. This project features a complete game experience with difficulty selection, interactive gameplay, and game-over/win screens.
 
+![Minesweeper Gameplay](ms.gif)
+
 ## Features
 
 - **Multiple Difficulty Levels**: Choose from Beginner, Intermediate, and Expert modes
