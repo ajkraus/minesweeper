@@ -78,7 +78,7 @@ class Gameplay(BaseScreen):
                         self.ui.screen.blit(text, text_rect)
                     
                     elif num == 0:
-                        if not self.game.game_over:
+                        if not self.game.game_over and self.win_time == 0:
                             pygame.draw.rect(self.ui.screen, (192, 192, 192), rect)
                     
                     else:
@@ -135,13 +135,23 @@ class Gameplay(BaseScreen):
 
     def update_screen_specific(self):
         # Update logic specific to the gameplay screen
-        if self.win_time != 0 and pygame.time.get_ticks() - self.win_time > 1000:
-            self.ui.show_game_won_screen()
+        if self.game.game_over:
+            if pygame.time.get_ticks() - self.bomb_time > 1500:
+                self.ui.show_gameover_screen()
+        
+        if self.win_time != 0 and pygame.time.get_ticks() - self.win_time > 1500:
+            self.ui.show_new_game_screen()
 
 
     def draw_screen_specific(self):
         # Drawing logic specific to the welcome screen
-        color = pygame.Color('red') if self.game.game_over else (192, 192, 192)
+        if self.game.game_over:
+            color = pygame.Color('red')
+        elif self.win_time != 0:
+            color = pygame.Color('green')
+        else:
+            color = (192, 192, 192)
+        
         self.ui.screen.fill(color)  
         
         self.draw_board()
