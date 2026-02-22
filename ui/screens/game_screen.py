@@ -128,10 +128,14 @@ class Gameplay(BaseScreen):
         if self.game.game_over:
             if pygame.time.get_ticks() - self.bomb_time > 1500:
                 self.ui.show_gameover_screen()
+        
+        # Check for win condition
+        if self.game.check_win() and self.win_time == 0:
+            self.win_time = pygame.time.get_ticks()
 
     def update_screen_specific(self):
-        # Update logic specific to the welcome screen
-        if self.game.remaining_tiles == 0 and self.win_time - pygame.time.get_ticks > 1000:
+        # Update logic specific to the gameplay screen
+        if self.win_time != 0 and pygame.time.get_ticks() - self.win_time > 1000:
             self.ui.show_game_won_screen()
 
 

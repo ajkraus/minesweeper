@@ -89,3 +89,21 @@ class MinesweeperGame:
             self.flags[row][col] = False
         else:
             self.flags[row][col] = True
+    
+    def check_win(self):
+        """Check if the player has won the game."""
+        # All mines must be flagged
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if self.board[row][col] == -1:  # This is a mine
+                    if not self.flags[row][col]:  # Mine is not flagged
+                        return False
+        
+        # All non-mine cells must be revealed
+        for row in range(self.rows):
+            for col in range(self.cols):
+                if self.board[row][col] != -1:  # Not a mine
+                    if not self.revealed_cells[row][col]:  # Cell is not revealed
+                        return False
+        
+        return True
