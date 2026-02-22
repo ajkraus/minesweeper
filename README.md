@@ -99,21 +99,9 @@ The project follows a modular architecture:
 - **UI Layer** (`ui/`): Handles all Pygame rendering and user interaction
 - **Screen-Based Navigation**: Each game state (welcome, difficulty, gameplay, etc.) is managed by a screen class
 
-## Known Issues / TODO
-
-- [ ] Update requirements.txt with specific versions
-- [ ] Add sound effects
-- [ ] Implement game statistics/high scores
-- [ ] Add timer functionality
-- [ ] Improve visual styling and animations
-
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and enhancement requests.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Author
 
